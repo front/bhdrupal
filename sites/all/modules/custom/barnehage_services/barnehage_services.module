@@ -1,0 +1,36 @@
+<?php
+function barnehage_services_services_resources() {
+  $search_resource = array(
+    'important_dates' => array(
+      'retrieve' => array(
+        'help' => 'Custom service that shows dates for the calendar module',
+        'callback' => '_barnehage_services_resource_node',
+      )
+    )
+  );
+  
+  return $search_resource;
+}
+
+
+function _barnehage_services_resource_node(){
+
+$result = db_select('node', 'n')
+   ->fields('n')
+   ->condition('type', 'important_date')
+   ->execute()
+   ->fetchAll();
+
+    
+$feed = array();
+$i = 0;
+foreach ($result as $res) {
+    $node = node_load($res->nid);
+    $date = $node->field_date[und][0][value];
+    $feed[$i]['start'] = $date;
+    $feed[$i]['title'] = $node->title;
+    $i++;
+}
+    
+return $feed;
+}

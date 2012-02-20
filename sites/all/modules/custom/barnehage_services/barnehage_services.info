@@ -1,0 +1,5 @@
+name = Barnehage Services
+description = Services module for barnehage
+package = Custom
+core = 7.x
+dependencies[] = services
