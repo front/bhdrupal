@@ -3,7 +3,7 @@ function barnehage_services_services_resources() {
   $search_resource = array(
     'important_dates' => array(
       'retrieve' => array(
-        'help' => 'Custom service that shows dates for the calendar module',
+        'help' => 'Custom service that shows dates for the calendar module.',
         'callback' => '_barnehage_services_resource_node',
       )
     )
